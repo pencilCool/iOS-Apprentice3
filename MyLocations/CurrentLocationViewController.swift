@@ -6,6 +6,10 @@
 //  Copyright © 2016年 tangyuhua. All rights reserved.
 //
 
+/*切换设置中locationserver 下mylocation app的 never 和 while using the app 出现：
+didFailWithError Error Domain=kCLErrorDomain Code=1 "(null)"
+*/
+
 import UIKit
 import CoreLocation
 
