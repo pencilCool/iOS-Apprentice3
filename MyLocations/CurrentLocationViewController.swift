@@ -11,6 +11,11 @@ import CoreLocation
 
 class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate {
     
+    
+    let locationManager = CLLocationManager()
+    
+    
+    
     @IBOutlet weak var messageLable: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
@@ -22,13 +27,17 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
     
 
     @IBAction func getLocation() { // do nothing yet
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.startUpdatingLocation()
+        
     }
     
     
 //    The CLLocationManager is the object that will give you the GPS coordinates. You’re putting the reference to this object in a constant (using let), not a variable (var). Once you have created the location manager object, the value of locationManager will never have to change.
 //   
     
-    let locationManager = CLLocationManager()
+ 
 
     
     
