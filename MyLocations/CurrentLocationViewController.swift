@@ -33,6 +33,11 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
         if authStatus == .notDetermined {
             locationManager.requestWhenInUseAuthorization()
             // 当用的时候获取权限，always：app没有活动起来也有权限
+            // app 没有删除的时候，这个逻辑总共只跑一次，删除simulator中的app ，重新编译app启动的时候才会又触发这里。
+            return
+        }
+        
+        if authStatus == .denied || authStatus == .restricted { showLocationServicesDeniedAlert()
             return
         }
         
@@ -68,6 +73,16 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let newLocation = locations.last!
-        print("didUpdateLocations \(newLocation)") }
+        print("didUpdateLocations \(newLocation)")
+    }
+    func showLocationServicesDeniedAlert() {
+        let alert = UIAlertController(title: "Location Services Disabled",
+                                      message:
+            "Please enable location services for this app in Settings.",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default,
+                                     handler: nil)
+        present(alert, animated: true, completion: nil)
+        alert.addAction(okAction) }
 }
 
