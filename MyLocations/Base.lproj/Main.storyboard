@@ -55,6 +55,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Latitude:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9He-wL-gyv">
+                                <frame key="frameInset" minX="44" minY="144" width="63" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Longitude:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TuF-7y-vDO">
+                                <frame key="frameInset" minX="44" minY="186" width="77" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -64,7 +78,7 @@
                         <outlet property="getButton" destination="K2o-u4-UHB" id="UWd-nA-9l7"/>
                         <outlet property="latitudeLabel" destination="kTA-VO-0qj" id="tzf-oC-vyw"/>
                         <outlet property="longitudeLabel" destination="i4M-Y5-c4s" id="DdO-Ig-2jm"/>
-                        <outlet property="messageLable" destination="yh0-w1-FPP" id="gdO-bf-NkA"/>
+                        <outlet property="messageLabel" destination="yh0-w1-FPP" id="koX-41-oFD"/>
                         <outlet property="tagButton" destination="2cB-f4-Ywl" id="f7X-MO-bD7"/>
                         <outlet property="view" destination="tsR-hK-woN" id="KS1-Qy-hde"/>
                     </connections>
