@@ -6,11 +6,10 @@
 //  Copyright © 2016年 tangyuhua. All rights reserved.
 //
 
-/*切换设置中locationserver 下mylocation app的 never 和 while using the app 出现：
-didFailWithError Error Domain=kCLErrorDomain Code=1 "(null)"
+/*
+ When the app starts up it has no location object (location is still nil) and therefore ought to show the "Tap 'Get My Location' to Start" message at the top as a hint to the user. But it doesn’t do that yet – the app doesn’t call updateLabels() until it receives   the first coordinates.
+
 */
-
-
 
 
 import UIKit
@@ -68,7 +67,8 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+       
+        updateLabels();
     }
 
     override func didReceiveMemoryWarning() {
