@@ -13,6 +13,7 @@
 		EC4A3AEE1DC3AF2E00984294 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC4A3AEC1DC3AF2E00984294 /* Main.storyboard */; };
 		EC4A3AF01DC3AF2E00984294 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4A3AEF1DC3AF2E00984294 /* Assets.xcassets */; };
 		EC4A3AF31DC3AF2E00984294 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC4A3AF11DC3AF2E00984294 /* LaunchScreen.storyboard */; };
+		ECFA81BA1DC4F02A008C2799 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = ECFA81B91DC4F02A008C2799 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		EC4A3AEF1DC3AF2E00984294 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC4A3AF21DC3AF2E00984294 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC4A3AF41DC3AF2E00984294 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECFA81B91DC4F02A008C2799 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 		EC4A3ADA1DC3AF2E00984294 = {
 			isa = PBXGroup;
 			children = (
+				ECFA81B91DC4F02A008C2799 /* README.md */,
 				EC4A3AE51DC3AF2E00984294 /* MyLocations */,
 				EC4A3AE41DC3AF2E00984294 /* Products */,
 			);
@@ -142,6 +145,7 @@
 			files = (
 				EC4A3AEB1DC3AF2E00984294 /* SecondViewController.swift in Sources */,
 				EC4A3AE71DC3AF2E00984294 /* AppDelegate.swift in Sources */,
+				ECFA81BA1DC4F02A008C2799 /* README.md in Sources */,
 				EC4A3AE91DC3AF2E00984294 /* CurrentLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +308,7 @@
 				EC4A3AF91DC3AF2E00984294 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
