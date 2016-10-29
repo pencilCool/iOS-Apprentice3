@@ -7,9 +7,9 @@
 //
 
 /*
- When the app starts up it has no location object (location is still nil) and therefore ought to show the "Tap 'Get My Location' to Start" message at the top as a hint to the user. But it doesn’t do that yet – the app doesn’t call updateLabels() until it receives   the first coordinates.
 
-*/
+ 
+ */
 
 
 import UIKit
@@ -22,6 +22,8 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
     
     // You will store the user’s current location in this variable.
     var location :CLLocation?
+    var updatingLocation = false
+    var lastLocationError: Error?
     
     
     
@@ -114,6 +116,17 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
             addressLabel.text = ""
             tagButton.isHidden = true
             messageLabel.text = "Tap 'Get My Location' to Start"
-        } }
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("didFailWithError \(error)")
+        if error.code == CLError.LocationUnknown.rawValue { return
+        }
+        lastLocationError = error
+        stopLocationManager()
+        updateLabels()
+    }
+    
 }
 
