@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EC4A3AE71DC3AF2E00984294 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4A3AE61DC3AF2E00984294 /* AppDelegate.swift */; };
-		EC4A3AE91DC3AF2E00984294 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4A3AE81DC3AF2E00984294 /* FirstViewController.swift */; };
+		EC4A3AE91DC3AF2E00984294 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4A3AE81DC3AF2E00984294 /* CurrentLocationViewController.swift */; };
 		EC4A3AEB1DC3AF2E00984294 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4A3AEA1DC3AF2E00984294 /* SecondViewController.swift */; };
 		EC4A3AEE1DC3AF2E00984294 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC4A3AEC1DC3AF2E00984294 /* Main.storyboard */; };
 		EC4A3AF01DC3AF2E00984294 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4A3AEF1DC3AF2E00984294 /* Assets.xcassets */; };
@@ -18,7 +18,7 @@
 /* Begin PBXFileReference section */
 		EC4A3AE31DC3AF2E00984294 /* MyLocations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC4A3AE61DC3AF2E00984294 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EC4A3AE81DC3AF2E00984294 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		EC4A3AE81DC3AF2E00984294 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
 		EC4A3AEA1DC3AF2E00984294 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		EC4A3AED1DC3AF2E00984294 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EC4A3AEF1DC3AF2E00984294 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				EC4A3AE61DC3AF2E00984294 /* AppDelegate.swift */,
-				EC4A3AE81DC3AF2E00984294 /* FirstViewController.swift */,
+				EC4A3AE81DC3AF2E00984294 /* CurrentLocationViewController.swift */,
 				EC4A3AEA1DC3AF2E00984294 /* SecondViewController.swift */,
 				EC4A3AEC1DC3AF2E00984294 /* Main.storyboard */,
 				EC4A3AEF1DC3AF2E00984294 /* Assets.xcassets */,
@@ -142,7 +142,7 @@
 			files = (
 				EC4A3AEB1DC3AF2E00984294 /* SecondViewController.swift in Sources */,
 				EC4A3AE71DC3AF2E00984294 /* AppDelegate.swift in Sources */,
-				EC4A3AE91DC3AF2E00984294 /* FirstViewController.swift in Sources */,
+				EC4A3AE91DC3AF2E00984294 /* CurrentLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
