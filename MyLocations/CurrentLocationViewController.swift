@@ -94,9 +94,31 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
         let newLocation = locations.last!
         print("didUpdateLocations \(newLocation)")
         
-        lastLocationError = nil // 当你由一个无法定位的地方，走到一个可以定位的地方，错误码就要清空
-        location = newLocation
-        updateLabels()
+        // 1 
+        if newLocation.timestamp.timeIntervalSinceNow < -5 {
+            return //  为什么是 -5
+        }
+        //2
+        if newLocation.horizontalAccuracy < 0 {
+            return
+        }
+        
+        //3
+        
+        if location == nil || location!.horizontalAccuracy > newLocation.horizontalAccuracy {
+            
+            // 4
+            lastLocationError = nil
+            location = newLocation
+            updateLabels()
+            // 5
+            if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
+                print("*** We're done!")
+                stopLocationManager()
+            }
+            
+        }
+
     }
     func showLocationServicesDeniedAlert() {
         let alert = UIAlertController(title: "Location Services Disabled",
