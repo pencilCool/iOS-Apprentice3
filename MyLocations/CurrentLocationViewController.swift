@@ -23,7 +23,7 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
     // You will store the user’s current location in this variable.
     var location :CLLocation?
     var updatingLocation = false
-    var lastLocationError: Error?
+    var lastLocationError: NSError?
     
     
     
@@ -48,13 +48,20 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
             return
         }
         
+        
         if authStatus == .denied || authStatus == .restricted { showLocationServicesDeniedAlert()
             return
         }
         
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.startUpdatingLocation()
+        
+//        
+//        locationManager.delegate = self
+//        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+//        locationManager.startUpdatingLocation()
+        
+        startLocationManager()
+        updateLabels()
+        
         
     }
     
@@ -87,6 +94,7 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
         let newLocation = locations.last!
         print("didUpdateLocations \(newLocation)")
         
+        lastLocationError = nil // 当你由一个无法定位的地方，走到一个可以定位的地方，错误码就要清空
         location = newLocation
         updateLabels()
     }
@@ -115,18 +123,62 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
             longitudeLabel.text = ""
             addressLabel.text = ""
             tagButton.isHidden = true
-            messageLabel.text = "Tap 'Get My Location' to Start"
+            
+            // 错误处理功能
+            let statusMessage: String
+            if let error = lastLocationError {
+                if error.domain == kCLErrorDomain && error.code == CLError.denied.rawValue {
+                    statusMessage = "Location Services Disabled"
+                } else {
+                    statusMessage = "Error Getting Location"
+                }
+            } else if !CLLocationManager.locationServicesEnabled() { statusMessage = "Location Services Disabled"
+            } else if updatingLocation {
+                statusMessage = "Searching..."
+            } else {
+                statusMessage = "Tap 'Get My Location' to Start"
+            }
+            messageLabel.text = statusMessage
+           
         }
     }
+
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    private func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("didFailWithError \(error)")
-        if error.code == CLError.LocationUnknown.rawValue { return
+// • CLError.locationUnknown - The location is currently unknown, but Core Location will keep trying.
+// • CLError.denied - The user declined the app to use location services.
+// • CLError.network - There was a network-related error.
+
+        if error.code == CLError.locationUnknown.rawValue {
+            return//只是暂时收不到定位信号，说不定等下就好了，不是什么了不得的错误，不作处理
         }
         lastLocationError = error
         stopLocationManager()
         updateLabels()
     }
+    
+    func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
+        
+    }
+    
+    func startLocationManager() {
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+            updatingLocation = true
+        }
+    }
+    // 不在当地而，而是出了服务区,要能关闭location Manager，为了节省电池还要能关闭无线功能
+    func stopLocationManager() {
+        if updatingLocation {
+            locationManager.stopUpdatingLocation()
+            locationManager.delegate = nil
+            updatingLocation = false
+        }
+    }
+    
     
 }
 
