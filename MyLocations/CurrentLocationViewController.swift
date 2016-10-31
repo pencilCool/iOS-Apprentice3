@@ -31,6 +31,7 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
     var performingReverseGeocoding = false
     var lastGeocodingError: Error?
     
+    var timer: Timer?
     
     
     @IBOutlet weak var messageLabel: UILabel!
@@ -275,11 +276,19 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
             updatingLocation = true
+            timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: Selector(("didTimeOut")), userInfo: nil, repeats: false)
+            
         }
     }
     // 不在当地而，而是出了服务区,要能关闭location Manager，为了节省电池还要能关闭无线功能
     func stopLocationManager() {
         if updatingLocation {
+            
+            if let timer = timer {
+                
+                timer.invalidate()
+            }
+            
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
             updatingLocation = false
@@ -318,6 +327,17 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
         }
         // 5
         return line1 + "\n" + line2
+    }
+    
+    
+    func didTimeOut() {
+        print("*** Time out")
+        if location == nil {
+            stopLocationManager()
+            lastLocationError = NSError(domain: "MyLocationsErrorDomain", code: 1, userInfo: nil)
+            updateLabels()
+            configureGetButton()
+        }
     }
 }
 

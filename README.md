@@ -40,3 +40,5 @@ if let location = location {
     
 }
 ```
+
+didTimeOut() is always called after one minute, whether you’ve obtained a valid location or not – unless stopLocationManager() cancels the timer first.
