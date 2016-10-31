@@ -6,3 +6,4 @@ Several readers that reported that if you are in China and are trying to reverse
 *** Found placemarks: nil, error: Optional(Error Domain=kCLErrorDomain Code=8 "(null)")
 
 
+在真机里面没有这个错误呢。
