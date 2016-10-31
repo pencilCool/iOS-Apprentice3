@@ -1,9 +1,42 @@
-Several readers that reported that if you are in China and are trying to reverse geocode an address that is outside of China, you may get an error and placemarks will be nil. Try a location inside China instead.
+程序有一个bug
+
+你只在精度提高的时候才更新一下
+
+模拟器的debug 下 有 run city 选项
 
 
-*** Going to geocode
-2016-10-31 09:06:16.924376 MyLocations[3328:304249] [Client] Geocode error: Error Domain=GEOErrorDomain Code=-8 "(null)"
-*** Found placemarks: nil, error: Optional(Error Domain=kCLErrorDomain Code=8 "(null)")
+计算当前定位和最近定位之间的距离。
+
+如果之前没有定位，那就把这个距离设置成很大的数据
+
+```
+
+var distance = CLLocationDistance(DBL_MAX) 
+if let location = location {
+    distance = newLocation.distanceFromLocation(location)
+}
+
+```
 
 
-在真机里面没有这个错误呢。
+
+即使这个时候正在reserve geocoding 中，强制执行最后一次定位的reserve geocoding 工作。
+
+```
+    if distance > 0 {
+                    performingReverseGeocoding = false
+                }
+
+```
+
+如你在一个地方呆了很就，那就不要再定位了
+
+```
+    if timeInterval > 10 {
+    print("*** Force done!")
+    stopLocationManager()
+    updateLabels()
+    configureGetButton()
+    
+}
+```

@@ -122,6 +122,15 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
             return
         }
         
+        
+        
+        var distance = CLLocationDistance(DBL_MAX)
+        
+        if let location = location {
+            distance = newLocation.distance(from: location)
+        }
+        
+        
         //3
         
         if location == nil || location!.horizontalAccuracy > newLocation.horizontalAccuracy {
@@ -136,6 +145,11 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
                 print("*** We're done!")
                 stopLocationManager()
                 configureGetButton()
+                
+                
+                if distance > 0 {
+                    performingReverseGeocoding = false
+                }
             }
             
             // The new code begins here:
@@ -160,8 +174,20 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate 
                     self.updateLabels() // 在closure中需要带上self
                 })
             }
-            // End of the new code
             
+            
+          
+            
+        } else if distance < 1.0 {
+            let timeInterval = newLocation.timestamp.timeIntervalSince(location!.timestamp)
+            
+                if timeInterval > 10 {
+                print("*** Force done!")
+                stopLocationManager()
+                updateLabels()
+                configureGetButton()
+                
+            }
         }
 
     }
